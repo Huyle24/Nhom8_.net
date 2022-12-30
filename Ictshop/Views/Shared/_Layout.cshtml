@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhoneStore</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel=" stylesheet" href="~/Content/Style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    @using Ictshop.Models
+
+    <style type="text/css">
+        body{
+            background-color:#F0F0F0;
+        }
+        .navbar-inverse {
+            background-color: #39B54A;
+            border-color: #39B54A;
+        }
+
+        .top_header {
+            background-color: black;
+            padding-left: 110px;
+            color: white;
+        }
+
+        .form-inline {
+            float: right;
+            padding-top: 10px;
+        }
+
+        .navbar-inverse .navbar-nav > li > a {
+            color: white;
+ 
+            font-size: x-large;
+        }
+
+        .navbar-inverse .navbar-brand {
+            color: white;
+        }
+
+        .navbar-inverse .navbar-nav > li > a {
+            color: white;
+
+            font-size: large;
+        }
+
+        .navbar-inverse .navbar-nav > li > a:hover {
+            color: black;
+            }
+
+        .navbar-brand {
+            color: cadetblue;
+        }
+        .spnoibat{
+            background-color:white;
+     
+    
+}
+        .spnoibat h3 {
+         
+            padding-left:30px;
+            
+}
+        .giohang{
+            color:white;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+
+    @{ 
+         var u = Session["use"] as Ictshop.Models.Nguoidung;
+    }
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+
+        <div class="top_header col-md-12" >
+
+            <div class="row">
+                @*<div class="col-sm-2"><img class="navbar-brand" src="~/HinhanhSP/logo1.jpg" width="20" height="20" style="padding:0" /></div>*@
+                <div class="col-sm-8 col-md-0" style="padding-left:650px">
+                    @Html.Action("GioHangPartial", "GioHang", new { @class = "giohang" })
+                </div>
+                @*@Html.Action("GioHangPartial", "GioHang",new { @style = "color:while" })*@
+                @{
+                    if (u != null)
+                    {
+                        <ul class="navbar-nav ml-auto ml-md-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="/User/Profile">Profile</a>
+                                    <hr />
+                                    <a class="dropdown-item" href="/User/DangXuat">Đăng xuất</a>
+                                </div>
+                            </li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <div class="col-sm-4 col-md-0">
+                            <a style="color:white" href="/User/Dangky"> Đăng ký</a>
+                            &nbsp;
+                            <a style="color:white" href="/User/Dangnhap"> Đăng nhập</a>
+                        </div>
+                    }
+                }
+
+
+            </div>
+
+        </div>
+        <div class="container">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img class="navbar-brand" src="https://img.lovepik.com/free-png/20211204/lovepik-mobile-phone-icon-png-image_401319983_wh1200.png" width="50" height="30" style="padding:0" />
+                @Html.ActionLink("PhoneStore", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <form class="form-inline" style="float:left">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
+                    @*<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>*@
+                </form>
+
+            </div>
+         
+            <div class="navbar-collapse collapse">
+
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/Home/Phone" title="PHONE">
+                            @*<span><i class="fas fa-headphones"></i></span>*@
+                            <span>PHONE</span>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Home/Laptop" title="LAPTOP">
+                            <span>LAPTOP</span></a>
+
+                    </li>
+                    <li>
+                        <a href="/Home/Tablet" title="TABLET">
+                            @*<span><i class="fas fa-headphones"></i></span>*@
+                            <span>TABLET</span>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a style="color:white"
+                           class="nav-link" 
+                           href="@Url.Action("Index", "DonHangs")">ĐƠN HÀNG</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        </div>
+
+
+    <br>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <div>
+        </div>
+        <br />
+    </div>  
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

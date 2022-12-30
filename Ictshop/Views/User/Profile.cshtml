@@ -1,0 +1,52 @@
+﻿@model Ictshop.Models.Nguoidung
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách đơn hàng</h2>
+
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dienthoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dienthoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Matkhau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Matkhau)
+        </dd>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @Html.ActionLink("Edit", "Edit")
+            </div>
+        </div>
+    </dl>
+</div>

@@ -1,0 +1,66 @@
+﻿@model List<Ictshop.Models.Chitietdonhang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Thống kê doanh thu</h2>
+<input type="button" value="Hôm nay" />
+<input type="date" id="1" name="birthday">
+<input type="date" id="2" name="birthday">
+<input type="submit" value="Search">
+<table class="table">
+    <tr>
+        <th>
+            Họ tên
+        </th>
+        <th>
+            Ngày đặt
+        </th>
+        <th>
+            Tình trạng
+        </th>
+        <th>
+            Sản phẩm
+        </th>
+        <th>
+            Số lượng
+        </th>
+        <th>
+            Đơn giá
+        </th>
+        <th>
+            Thành tiền
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Donhang.Nguoidung.Hoten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Donhang.Ngaydat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Donhang.Tinhtrang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sanpham.Tensp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Soluong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dongia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Thanhtien)
+            </td>
+        </tr>
+    }
+</table>
+<div> Tồng tiền: @ViewBag.TongTien </div>
